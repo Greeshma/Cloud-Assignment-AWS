@@ -1,0 +1,120 @@
+<?php
+
+	error_reporting(-1);
+	header("Content-type: text/html; charset=utf-8");
+	require_once '../sdk.class.php';
+	
+	$title = $_POST['title'];
+	$author = $_POST['author'];
+	$publisher = $_POST['publisher'];
+	$flag = 0;
+
+	$sdb = new AmazonSDB();
+	$domain = 'TeamMangoBooks';
+
+	$query = "select * from $domain ";
+
+	if (!empty($author)) {
+		$query .= " where Author = '";
+		$query .= $author;
+		$query .= "' ";
+		$flag = 1;
+	}
+	if (!empty($title)){
+		if (flag == 0 ) 
+			$query .= " where Title = '$title' ";
+		else 
+			$query .= " and Title = '$title' ";
+		$flag = 1;
+	}
+	if (!empty($publisher)){
+		if (flag == 0)
+			$query .= " where Publisher = '$publisher' ";
+		else 
+			$query .= " and Publisher = '$publisher' ";
+		$flag = 1;
+	}
+	
+	$results = $sdb->select($query);
+	$items = $results->body->Item();
+	$data = reorganise_data($items);
+//	$html = generate_html_table($data);
+
+	function reorganize_data($items)	{
+		$rows = array();
+		$columns = array();
+
+		foreach ($items as $item) {
+			$row = array();
+			$row['id'] = (string) $item->Name;
+
+			foreach ($item->Attribute as $attribute) {
+				$column_name = (string) $attribute->Name;
+
+				if (!isset($row[$column_name])) 
+					$row[$column_name] = array();
+
+				$row[$column_name][] = (string) $attribute->Value;
+//				natcasesort($row[$column_name]);
+
+				if (!in_array($column_name, $columns, true))
+					$columns[] = $column_name;
+			}
+
+			$rows[] = $row;
+		}
+
+		return array(
+			'columns' => $columns,
+			'rows' => $rows,
+		);
+	}
+/*
+	function generate_html_table($data)
+	{
+		$columns = $data['columns'];
+		$rows = $data['rows'];
+
+		$output = '<table cellpadding="0" cellspacing="0" border="0">' . PHP_EOL;
+		$output .= '<thead>';
+		$output .= '<tr>';
+		$output .= '<th></th>'; 
+
+		foreach ($columns as $column)
+		{
+			$output .= '<th>' . $column . '</th>';
+		}
+
+		$output .= '</tr>';
+		$output .= '</thead>' . PHP_EOL;
+		$output .= '<tbody>';
+
+		foreach ($rows as $row)
+		{
+			$output .= '<tr>' . PHP_EOL;
+			$output .= '<th>' . $row['id'] . '</th>';
+
+			foreach ($columns as $column)
+			{
+				$output .= '<td>' . (isset($row[$column]) ? implode(', ', $row[$column]) : '') . '</td>';
+			}
+
+			$output .= '</tr>' . PHP_EOL;
+		}
+
+		$output .= '</tbody>';
+		$output .= '</table>';
+
+		return $output;
+	}
+*/
+?>
+
+<!DOCTYPE html>
+<html>
+	<body>
+
+	<?php echo $html; ?>
+
+	</body>
+</html>

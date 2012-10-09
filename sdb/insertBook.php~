@@ -1,0 +1,37 @@
+<?php
+
+	error_reporting(-1);
+	header("Content-type: text/html; charset=utf-8");
+	require_once '../sdk.class.php';
+
+	$sdb = new AmazonSDB();
+	$domain = 'TeamMangoBooks';
+
+	
+
+	if ($new_domain->isOK())
+	{
+		$add_attributes = $sdb->batch_put_attributes($domain, array(
+			'1933988665' => array(
+				'Title'    		=> 'Algorithms of the Intelligent Web', 
+				'Author' 			=> array('Haralambos Marmanis', 'Dmitry Babenko'),
+				'iPublisher'  => '',
+			),
+			'' => array(
+				'Title'    		=> '',
+				'Author' 			=> '',
+				'iPublisher'  => '',
+			),
+			'' => array(
+				'Title'    		=> '',
+				'Author' 			=> '',
+				'iPublisher'  => '',
+			),
+			'' => array(
+				'Title'    		=> '',
+				'Author' 			=> '',
+				'iPublisher'  => '',
+			),
+		));
+
+?>

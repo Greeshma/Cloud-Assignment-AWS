@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Books@TeamMango</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloud Asst 1">
+    <meta name="author" content="Team Mango">
+
+    <!-- Le styles -->
+    <link href="./bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<![endif]-->
+			<script type="text/javascript">
+				function validateData() {
+					var aem=document.getElementById('authemail').value;
+					var apwd=document.getElementById('authpwd').value;
+					if (aem==null || aem=="") {
+						if(apwd==null || apwd=="") {
+							alert("Please fill the username and password");
+							return false;
+						}
+						alert("Please fill the username");
+				  	return false;
+					}
+					if (apwd==null || apwd=="") {
+						alert("Please fill the password");
+						return false;
+					}
+				}
+			</script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="hero-unit">
+				<h1>Welcome to Books@TeamMango!</h1> </br> </br>
+        <p>Books@TeamMango is a website for sharing books! Authors, login and
+				upload your books and allow a whole new world of readers to access
+				them!!!</p>
+	<br/>
+	<p style="color:red" align="center" > Invalid User Name or Password </p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Author Login</h2>
+					<form name="authorlogin" class="navbar-form" action="http://ec2-23-22-140-205.compute-1.amazonaws.com/sdb/validateWriter.php" method="POST">
+						<input name="authemail" id="authemail" class="span2" type="text" placeholder="Email"/> </br>
+						<input name="authpwd" id="authpwd" class="span2" type="password" placeholder="Password"/> </br> </br>
+						<input type="submit" class="btn btn-primary" href="#" value="Sign In &raquo;"/>
+					</form>
+
+        </div>
+        <div class="span4">
+          <h2>Reader Login</h2>
+          <form name="readerlogin" class="navbar-form" method="POST" action="http://ec2-23-22-140-205.compute-1.amazonaws.com/sdb/validateReader.php">
+						<input name="reademail" class="span2" type="text" placeholder="Email"/> </br>
+						<input name="readpwd" class="span2" type="password" placeholder="Password"/> </br> </br>
+  					<input type="submit" class="btn btn-primary" href="#" value="Sign In &raquo;"/>
+					</form>
+       </div>
+        <div class="span4">
+          <h2>Admin Login</h2>
+          <form name="readerlogin" class="navbar-form" method="POST" action="http://ec2-23-22-140-205.compute-1.amazonaws.com/sdb/validateAdmin.php">
+						<input name="reademail" class="span2" type="text" placeholder="Email"/> </br>
+						<input name="readpwd" class="span2" type="password" placeholder="Password"/> </br> </br>
+  					<input type="submit" class="btn btn-primary" href="#" value="Sign In &raquo;"/>
+					</form>
+       </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Team Mango 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

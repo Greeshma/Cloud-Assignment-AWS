@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+		</style>
+		<script type="text/javascript">
+			function validateStuff() {
+				var em=document.getElementById('uname').value;
+				var pwd=document.getElementById('pwd').value;
+				var repwd=document.getElementById('repwd').value;
+				var sel=document.getElementById('seltype').value;
+				if(em==null || em=="") {
+					alert("Please fill a username");
+					return false;
+				}
+				if(pwd==null || pwd=="" || repwd==null || repwd=="") {
+					alert("Please fill passwords");
+					return false;
+				}
+				if(pwd !== repwd) {
+					alert("Passwords do not match");
+					return false;
+				}
+				if(sel=="Select" || sel==null || sel=="") {
+					alert("Please select an option from the dropdown list");
+					return false;
+				}
+			}
+		</script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+  </head>
+
+  <body>
+
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+				<h1>Welcome!</h1>
+				<p>Please sign up to continue using Books@TeamMango</p>
+			</div>
+
+			<!-- Example row of columns -->
+			<div class="row">
+        <div class="span6">
+					<h2>Please fill in all the fields</h2>
+					<form class="navbar-form" onsubmit=validateStuff();>
+						<input type="text" id="uname" name="uname" class="span2" placeholder="Enter a username"/>
+						</br>
+						<input type="password" id="pwd" name="pwd" placeholder="Enter a	password"/> </br>
+						<input type="password" id="repwd" placeholder="Retype the password">
+						</br>
+						<select id="seltype" name="seltype">
+							<option>Select</option>
+							<option>Reader</option>
+							<option>Author</option>
+						</select> </br>
+					<input type="submit" class="btn btn-primary" value="Sign Up &raquo;"/>
+        </div>
+			</div>
+			</br>
+
+			<hr>
+
+      <footer>
+        <p>&copy; Team Mango2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+		    ================================================== -->
+				    <!-- Placed at the end of the document so the pages load faster -->
+						    <script src="../assets/js/jquery.js"></script>
+								<script src="../assets/js/bootstrap-transition.js"></script>
+								<script src="../assets/js/bootstrap-alert.js"></script>
+								<script src="../assets/js/bootstrap-modal.js"></script>
+								<script	src="../assets/js/bootstrap-dropdown.js"></script>
+								<script	src="../assets/js/bootstrap-scrollspy.js"></script>
+								<script src="../assets/js/bootstrap-tab.js"></script>
+								<script	src="../assets/js/bootstrap-tooltip.js"></script>
+								<script	src="../assets/js/bootstrap-popover.js"></script>
+								<script	src="../assets/js/bootstrap-button.js"></script>
+								<script	src="../assets/js/bootstrap-collapse.js"></script>
+								<script src="../assets/js/bootstrap-carousel.js"></script>
+								<script	src="../assets/js/bootstrap-typeahead.js"></script>
+
+
+  </body>
+</html>

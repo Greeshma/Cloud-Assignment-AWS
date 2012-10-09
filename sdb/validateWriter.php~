@@ -1,0 +1,23 @@
+<?php
+
+	error_reporting(-1);
+	header("Content-type: text/html; charset=utf-8");
+	require_once '../sdk.class.php';
+
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+
+	$sdb = new AmazonSDB();
+	$domain = 'TeamMangoReaders';
+
+	$query = "SELECT Password FROM $domain WHERE email = '$email' ";
+	$pwd = $sdb->select($query);
+
+	if ($pwd == $password) {
+		// Valid Reader
+	}
+	else {
+		// Invalid Reader
+	}
+
+?>
